@@ -37,15 +37,21 @@ for(let file of filenames) {
     let fileData = fs.readFileSync(file,"utf-8");
     for(let flag of flags) {
         if(flag == "-rs") {
-            fileData = removeAll(fileData," ");
+            fileData = removeAll(fileData," ");  //remove space
         }
         if(flag == "-rn") {
-            fileData = removeAll(fileData, "\r\n")
+            fileData = removeAll(fileData, "\r\n") // remove extra line
         }
         if(flag == "-rsc") {
             for(let secondaryArgument of secondaryArguments) {
                 fileData = removeAll(fileData,secondaryArgument);
             }
+        }
+        if(flag == "-s"){
+            addsequence(filedata);
+        }
+        if(flag == "-sn"){
+            addsequencenline(filedata);
         }
     }
     console.log(fileData);
@@ -53,4 +59,12 @@ for(let file of filenames) {
 
 function removeAll(string, removalData) {
     return string.split(removalData).join("");
+}
+  function addsequence(string){
+
+  }
+
+
+  function addsequencenline(string){
+      
 }
