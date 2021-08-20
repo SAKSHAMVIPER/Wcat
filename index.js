@@ -56,6 +56,12 @@ for(let file of filenames) {
             let data = addsequencenline(fileData);
             console.log(data);
         }
+        if(flag == "-rel"){
+            let pdata = addsequencenextraline(fileData);
+            for(let i = 0;i < pdata.length;i++){
+                console.log(pdata[i]);
+            }
+        }
     }
     // console.log(fileData);
 }
@@ -83,4 +89,26 @@ function removeAll(string, removalData) {
         }
     }
     return contentarr;
+}
+
+
+
+function addsequencenextraline(fileData){
+    let contentArr=fileData.split("\r\n");
+    let data=[];
+    for(let i=1;i<contentArr.length;i++){
+        if(contentArr[i]=="" && contentArr[i-1]==""){
+            contentArr[i]=null;
+        }
+        if(contentArr[i]=="" && contentArr[i-1]==null){
+            contentArr[i]=null;
+        }
+    }
+
+    for(let i=0;i<contentArr.length;i++){
+        if(contentArr[i]!=null){
+            data.push(contentArr[i]);
+        }
+    }
+    return data;
 }
